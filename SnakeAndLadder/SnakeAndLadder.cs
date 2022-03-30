@@ -16,7 +16,7 @@ namespace SnakeAndLadder
         public static void DiceRoll()
         {
             const int IS_NO_PLAY = 0, IS_LADDER = 1, IS_SNAKE = 2, WINNING_POSITION=100;
-            int newPosition = 0;
+            int newPosition = 0, numOfTimesDiceRolled=0;
             while(newPosition < WINNING_POSITION)
             {
                 Random random = new Random();
@@ -45,8 +45,9 @@ namespace SnakeAndLadder
                 {
                     newPosition -= dice;
                 }
+                numOfTimesDiceRolled++;
+            Console.WriteLine("new position of player1 {0} after rolling dice {1} time(s) ", newPosition, numOfTimesDiceRolled);
             }
-         Console.WriteLine("new position of player1: " + newPosition);
 
         }
 
