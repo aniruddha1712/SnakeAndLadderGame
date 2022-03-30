@@ -17,7 +17,7 @@ namespace SnakeAndLadder
         {
             const int IS_NO_PLAY = 0, IS_LADDER = 1, IS_SNAKE = 2, WINNING_POSITION=100;
             int newPosition = 0;
-            while(newPosition <= WINNING_POSITION)
+            while(newPosition < WINNING_POSITION)
             {
                 Random random = new Random();
                 int dice = random.Next(1, 7);
@@ -40,6 +40,10 @@ namespace SnakeAndLadder
                         }
                         Console.WriteLine("its snake, going down "+dice);
                         break;
+                }
+                if (newPosition > WINNING_POSITION)
+                {
+                    newPosition -= dice;
                 }
             }
          Console.WriteLine("new position of player1: " + newPosition);
