@@ -15,29 +15,35 @@ namespace SnakeAndLadder
         }
         public static void DiceRoll()
         {
-            const int IS_NO_PLAY = 0, IS_LADDER = 1, IS_SNAKE = 2;
+            const int IS_NO_PLAY = 0, IS_LADDER = 1, IS_SNAKE = 2, WINNING_POSITION=100;
             int newPosition = 0;
-            Random random = new Random();
-            int dice = random.Next(1, 7);
-            int option = random.Next(0, 3);
-            switch(option)
+            while(newPosition <= WINNING_POSITION)
             {
-                case IS_NO_PLAY:
-                    newPosition += 0;
-                    break;
-                case IS_LADDER:
-                    newPosition += dice;
-                    break;
-                case IS_SNAKE:
-                    newPosition -= dice;
-                    if(newPosition<=0)
-                    {
-                        newPosition = 0;
-                    }
-                    break;
+                Random random = new Random();
+                int dice = random.Next(1, 7);
+                int option = random.Next(0, 3);
+                switch(option)
+                {
+                    case IS_NO_PLAY:
+                        newPosition += 0;
+                        Console.WriteLine("its no play, cannot move");
+                        break;
+                    case IS_LADDER:
+                        newPosition += dice;
+                        Console.WriteLine("its ladder, going up "+dice);
+                        break;
+                    case IS_SNAKE:
+                        newPosition -= dice;
+                        if(newPosition<=0)
+                        {
+                            newPosition = 0;
+                        }
+                        Console.WriteLine("its snake, going down "+dice);
+                        break;
+                }
             }
+         Console.WriteLine("new position of player1: " + newPosition);
 
-            Console.WriteLine("new position of player1: " + newPosition+ " got number "+dice+" in die and option "+option);
         }
 
         static void Main(string[] args)
